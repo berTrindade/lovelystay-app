@@ -1,26 +1,17 @@
-import { useFetch } from "./hooks/useFetch";
-
-type Repository = {
-  full_name: string;
-  description: string;
-}
+import { Provider } from "react-redux";
+import { Routes } from "./routes/index";
+import store from './store';
+import GlobalStyle from './styles/global';
+import { Header } from './components/Header'
 
 function App() {
-
-  const { data: repositories, isFetching } = useFetch<Repository[]>("users/bertrindade/repos");
-
   return (
-    <ul>
-      { isFetching && <p>Loading...</p>}
-      {repositories?.map(repo => {
-        return (
-          <li key={repo.full_name}>
-            <strong>{repo.full_name}</strong>
-            <p>{repo.description}</p>
-          </li>
-        )
-      })}
-    </ul>
+    <>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
+      <GlobalStyle />
+    </>
   )
 }
 
