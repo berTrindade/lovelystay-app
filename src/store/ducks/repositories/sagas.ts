@@ -16,6 +16,9 @@ export function* load(action: Effect) {
   
     yield put(loadSuccess(response.data));
   } catch (error) {
+
+    console.log('error :>> ', error);
+
     yield put(loadFailure());
   }
 }

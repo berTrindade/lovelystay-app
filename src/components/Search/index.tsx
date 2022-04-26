@@ -1,31 +1,44 @@
 import {
     ChangeEvent,
-    FormEvent, useCallback, useState,
+    FormEvent, useCallback, useEffect, useState,
   } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loadRequest } from '../../store/ducks/repositories/actions';
-import { Container } from './styles';
+import { Container, ErrorMessage } from './styles';
 import { useNavigate } from 'react-router-dom';
+import { ApplicationState } from '../../store';
 
   
 export function Search() {
     const dispatch = useDispatch();
     const [username, setUsername] = useState('');
     const history = useNavigate();
+
+    const { error, loading } = useSelector((state: ApplicationState) => state.repositories);  
   
+    console.log('error', error)
+
     const handleInputChanges = (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault();
+      
       const { value } = e.target;
+
       setUsername(value);
     };
   
     const handleSubmit = useCallback((e: FormEvent) => {
       e.preventDefault();
+
       dispatch(loadRequest(username));
 
-      history(`/profile/${username}`);
-    }, [dispatch, username]);
-  
+      console.log("loading", loading);
+      console.log('error', error)
+
+      if(!error && loading) return;
+      else history(`/profile/${username}`);
+
+    }, [username]);
+
     return (
       <Container>
         <form onSubmit={handleSubmit}>
@@ -46,6 +59,7 @@ export function Search() {
             Search
           </button>
         </form>
+        {error ? <ErrorMessage>Error</ErrorMessage> : null}
       </Container>
     );
   }

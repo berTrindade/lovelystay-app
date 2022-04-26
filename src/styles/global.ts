@@ -20,33 +20,45 @@ export default createGlobalStyle`
         --blue: #5965e0;
         --blue-dark: #4953b8;
         --blue-twitter: #2aa9e0;
+        --main-color: #00BFB3;
+        --background-color: #434343;
+        --neutral-color: #F9F9F9;
+        --dark-neutral-color: #E0E0E0;
+        --light-color: #FFF;
     }
+
     @media(max-width: 1080px) {
         html {
             /* 16 x 0.9375 = minus 1 pixel with rem measurement */
             font-size: 93.75%; 
         }
     }
+    
     @media(max-width: 720px) {
         html {
             /* 14 x 0.9375 = minus 1 pixel with rem measurement */
             font-size: 87.5%; 
         }
     }
+
     body {
         background-color: var(--background);
         color: var(--text);
     }
+
     body, input, button {
         font: 400 1rem "Inter", sans-serif;    
     }
+
     button {
         cursor:pointer;    
     }
+
     a {
         color: inherit;
         text-decoration: none;
     }
+
     .container {
         max-width: 992px;
         margin: 0 auto;

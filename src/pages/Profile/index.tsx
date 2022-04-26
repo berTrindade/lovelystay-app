@@ -3,20 +3,10 @@ import { Table } from '../../components/Table';
 import { ApplicationState } from '../../store';
 import { Container, OwnerContainer } from './styles';
 import avatarFallbackImage from '../../assets/GitHub-Mark-120px-plus.png';
-import { useEffect } from 'react';
-import { loadRequest } from '../../store/ducks/repositories/actions';
-import { useParams } from 'react-router-dom';
 import { Header } from '../../components/Header';
 
 export function Profile() {
   const repositories = useSelector((state: ApplicationState) => state.repositories);  
-  const { username } = useParams();
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-      dispatch(loadRequest(username));
-  }, []);
 
   const { data } = repositories || {};
 

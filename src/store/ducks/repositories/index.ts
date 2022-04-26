@@ -8,6 +8,10 @@ const INITIAL_STATE: RepositoriesState = {
 };
 
 const reducer: Reducer<RepositoriesState> = (state = INITIAL_STATE, action) => {
+
+  console.log('state', state)
+  console.log('action', action)
+
   switch (action.type) {
     case RepositoriesTypes.LOAD_REQUEST:
       return { ...state, loading: true };
@@ -17,7 +21,6 @@ const reducer: Reducer<RepositoriesState> = (state = INITIAL_STATE, action) => {
         loading: false,
         error: false,
         data: action.payload,
-
       };
     case RepositoriesTypes.LOAD_FAILURE:
       return {
