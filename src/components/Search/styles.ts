@@ -81,7 +81,7 @@ export const Container = styled.div`
     button {
         height: 40px;
         border: none;
-        background-color: var(--main-color);
+        background-color: var(--golden);
         color: var(--white);
         font-family: 'Nunito', sans-serif;
         cursor: pointer;
