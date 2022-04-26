@@ -83,6 +83,7 @@ export const Container = styled.div`
         border: none;
         background-color: var(--golden);
         color: var(--white);
+        
         font-family: 'Nunito', sans-serif;
         cursor: pointer;
 

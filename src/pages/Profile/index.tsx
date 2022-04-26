@@ -20,6 +20,8 @@ export function Profile() {
           <img src={owner ? owner.avatar_url : avatarFallbackImage} alt="Avatar" />
           <h1>{owner && owner.login}</h1>
         </OwnerContainer>
+
+        <p><b>Number of Repositories: </b>{repositories?.data.length}</p>
       
         {repositories ? (
         <Table columns={['NAME', 'DESCRIPTION']} widths={['auto', '', '']}>
