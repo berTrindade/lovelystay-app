@@ -3,7 +3,7 @@ import { Wrapper } from './styles';
 interface TableProps {
     columns: string[]
     widths?: string[]
-  }
+}
 
 export function Table<TableProps>({ children, widths, columns }) {
   return (
